@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">TiDHDemo</string>
+    <string name="ui_btn_genKey">生成公钥</string>
+    <string name="ui_txt_match">是否匹配：</string>
+    <string name="ui_txt_clientKey">客户端计算公钥:</string>
+    <string name="ui_txt_serverKey">服务端计算公钥:</string>
+</resources>
