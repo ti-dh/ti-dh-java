@@ -29,36 +29,37 @@ ___
 
 实际项目中客户直接参考api包里面的DHController来根据你的实际情况使用
 
-API说明:
-**getBaseData:**
+DH算法服务端的具体实现参考DH类
 
-请求参数: 无
+说明:
+**init()函数**
 
-返回参数:
+参数: 无
 
-| 参数 | 类型 | 说明 |
+返回:
+
+| 字段 | 类型 | 含义 |
 | ------ | ------ | ------ |
 | p | String | 服务端计算出来的p |
 | g | String | 服务端计算出来的g |
-| server_number | String | 处理过的服务端【私钥】，返回给客户端 |
+| server_number | String | 服务端【私钥】，请保密，不可以外泄 |
+| processed_server_number | String | 处理过的服务端【私钥】，返回给客户端 |
 
-说明:服务端返回的server_number是计算过后的 在返回的前一步要缓存一遍原始数据
-
-**postClientData**
+**computeShareKey()函数**
 
 请求参数: 
 
-| 参数 | 类型 | 说明 |
+| 字段 | 类型 | 含义 |
 | ------ | ------ | ------ |
-| client_number | String | 客户端计算出的client_number |
+| client_number | String | 客户端提交过来client_number |
+| server_number | String | 服务端server_number，未经过处理的需要保密的那个 |
+| p | String | 服务端计算出来的p |
 
 返回参数:
 
 | 参数 | 类型 | 说明 |
 | ------ | ------ | ------ |
-| key | String | 服务端计算出的密钥 |
-
-说明:在实际生产环境中不能返回的要保密的 本例子为了方便测试验证 所以返回
+| key | String | 协商完成的用于对称加解密的密钥 |
 
 
-```com.server.client```是客户端的包，可以直接运行
+```com.server.client```是客户端的包，里面包含了计算client_number的方法 可以直接运行
